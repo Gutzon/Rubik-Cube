@@ -14,19 +14,22 @@
             draggable_resizable_init();
         }
         function Get_Cube() {
-            crossOrigin: null
-            $.getJSON(JSON.stringify("//" + url + "/api/Values"), function (result) {
-                $.each(result, function (i, field) {
-                    document.getElementsByTagName("body")[0].innerHTML = JSON.stringify(field);
-                });
+            $.getJSON("//" + url + "/api/values", function (result) {
+                White_Side = result.White_Side;
+                Yellow_Side = result.Yellow_Side;
+                Red_Side = result.Red_Side;
+                Orange_Side = result.Orange_Side;
+                Blue_Side = result.Blue_Side;
+                Green_Side = result.Green_Side;
+                Rubik_Cube_Update_Color();
             });
         }
         function Post_Cube() {
             $.ajax({
                 "type": "POST",
-                "url": "https://" + url + "api/values",
+                "url": "https://" + url + "/api/values",
                 "headers": { "Content-Type": "application/json" },
-                "data": "Data",
+                "data": JSON.stringify({White_Side, Yellow_Side, Red_Side, Orange_Side, Blue_Side, Green_Side}),
             });
         }
     </script>
