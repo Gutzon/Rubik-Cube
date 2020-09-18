@@ -78,13 +78,38 @@ function Rubik_Cube_Build() {
             var e = 0;
             while (e < 9) {
                 var colordiv = document.createElement("div")
-                //colordiv.classList.add("Rubik_Cube_" + colorarray[j])
                 objectadd.appendChild(colordiv);
                 e += 1;
             }
             objarray[i].appendChild(objectadd);
             j += 1;
         }
+        var objectadd = document.createElement("div");
+        objectadd.classList.add("Rubik_Cube_Rotator");
+        objarray[i].appendChild(objectadd);
+        objectadd = document.createElement("div");
+        objectadd.classList.add("Rubik_Cube_Sides");
+        objectadd.classList.add("Rubik_Cube_Rotator_Front");
+        objectadd.setAttribute("style", "position: fixed; transform: translateX(0px) translateY(0px) translateZ(" + (400 / 2) + "px); width: " + 400 + "px; height: " + 400 + "px;")
+        var e = 0;
+        while (e < 9) {
+            var colordiv = document.createElement("div")
+            objectadd.appendChild(colordiv);
+            e += 1;
+        }
+        objarray[i].getElementsByClassName("Rubik_Cube_Rotator")[0].appendChild(objectadd);
+
+        objectadd = document.createElement("div");
+        objectadd.classList.add("Rubik_Cube_Sides");
+        objectadd.classList.add("Rubik_Cube_Rotator_Side1");
+        objectadd.setAttribute("style", "position: fixed; transform: rotateX(-90deg) translateX(0px) translateY(0px) translateZ(" + (400 / 2) + "px); width: " + 400 + "px; height: " + 400 + "px;")
+        var e = 0;
+        while (e < 9) {
+            var colordiv = document.createElement("div")
+            objectadd.appendChild(colordiv);
+            e += 1;
+        }
+        objarray[i].getElementsByClassName("Rubik_Cube_Rotator")[0].appendChild(objectadd);
 
         i += 1;
     }
@@ -134,6 +159,9 @@ function Rubik_Cube_Rotate_Cube() {
     var sliderX = document.getElementsByClassName("Rubik_Cube_Slider")[0];
     var sliderY = document.getElementsByClassName("Rubik_Cube_Slider_V")[0];
     obj.setAttribute("Style", "transform: rotateY(" + (360 / 100 * sliderX.value) + "deg) rotateX(" + (360 / 100 * sliderY.value) + "deg)")
+}
+function Set_Rubik_Side_Rotate(){
+
 }
 function Rubik_Cube_Rotate_Side(side_way) {
     var colorholder = [8];
